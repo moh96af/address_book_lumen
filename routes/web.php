@@ -14,3 +14,15 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('contacts',  ['uses' => 'ContactController@showAllContacts']);
+
+    $router->get('contacts/{id}', ['uses' => 'ContactController@showOneContact']);
+
+    $router->post('contacts', ['uses' => 'ContactController@create']);
+
+    $router->delete('contacts/{id}', ['uses' => 'ContactController@delete']);
+
+    $router->put('contacts/{id}', ['uses' => 'ContactController@update']);
+});
