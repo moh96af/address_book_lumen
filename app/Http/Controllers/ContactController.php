@@ -78,7 +78,7 @@ class ContactController extends Controller
 
         if ($contact) {
 
-            return response()->json(["contact" => $contact]);
+            return response()->json($contact);
 
         }
         return response()->json(["status" => "error", "message" => "Contact not found"]);
