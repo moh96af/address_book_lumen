@@ -31,6 +31,9 @@ class ContactController extends Controller
 
         $contact->save();
 
+        // Using raw SQL without binding parameters
+        DB::insert("INSERT INTO contacts (firstName, lastName, phone, email) VALUES ('$contact->firstName', '$contact->lastName', '$contact->phone', '$contact->email')");
+
         return response()->json(["status" => "success", "message" => "Created Successfully"]);
 
     }
